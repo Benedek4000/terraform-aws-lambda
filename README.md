@@ -39,12 +39,13 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_apiGatewayInvokeArns"></a> [apiGatewayInvokeArns](#input\_apiGatewayInvokeArns) | A set of Cloudwatch Event ARNs that have permission to invoke the function. | `list(any)` | `[]` | no |
+| <a name="input_apiGatewayInvokeArns"></a> [apiGatewayInvokeArns](#input\_apiGatewayInvokeArns) | A set of API Gateway Execution ARNs that have permission to invoke the function. | `list(any)` | `[]` | no |
 | <a name="input_build_files"></a> [build\_files](#input\_build\_files) | The path of the folder containing the build files. | `string` | n/a | yes |
-| <a name="input_cloudwatchInvokeArns"></a> [cloudwatchInvokeArns](#input\_cloudwatchInvokeArns) | A set of API Gateway Execution ARNs that have permission to invoke the function. | `list(any)` | `[]` | no |
+| <a name="input_cloudwatchInvokeArns"></a> [cloudwatchInvokeArns](#input\_cloudwatchInvokeArns) | A set of Cloudwatch Event ARNs that have permission to invoke the function. | `list(any)` | `[]` | no |
 | <a name="input_environmentVariables"></a> [environmentVariables](#input\_environmentVariables) | Environment variables for the function. | `map(string)` | `{}` | no |
 | <a name="input_function_name"></a> [function\_name](#input\_function\_name) | Function name. | `string` | n/a | yes |
 | <a name="input_has_dependencies"></a> [has\_dependencies](#input\_has\_dependencies) | True if the function has dependencies in the 'dependencies' folder. | `bool` | `false` | no |
+| <a name="input_overrideFunctionSource"></a> [overrideFunctionSource](#input\_overrideFunctionSource) | Use this instead of the function name to locate the source code. | `string` | `null` | no |
 | <a name="input_role_arn"></a> [role\_arn](#input\_role\_arn) | The ARN of the role the lambda function will assume. | `string` | n/a | yes |
 | <a name="input_runtime"></a> [runtime](#input\_runtime) | The runtime environment of the fucntion. | `string` | n/a | yes |
 | <a name="input_source_path"></a> [source\_path](#input\_source\_path) | The path of the folder containing the lambda function folder. | `string` | n/a | yes |

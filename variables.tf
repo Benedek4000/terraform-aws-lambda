@@ -48,12 +48,18 @@ variable "environmentVariables" {
 
 variable "apiGatewayInvokeArns" {
   type        = list(any)
-  description = "A set of Cloudwatch Event ARNs that have permission to invoke the function."
+  description = "A set of API Gateway Execution ARNs that have permission to invoke the function."
   default     = []
 }
 
 variable "cloudwatchInvokeArns" {
   type        = list(any)
-  description = "A set of API Gateway Execution ARNs that have permission to invoke the function."
+  description = "A set of Cloudwatch Event ARNs that have permission to invoke the function."
   default     = []
+}
+
+variable "overrideFunctionSource" {
+  type        = string
+  description = "Use this instead of the function name to locate the source code."
+  default     = null
 }

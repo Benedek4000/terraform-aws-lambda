@@ -17,7 +17,7 @@ resource "aws_lambda_layer_version" "lambda_layer" {
 data "archive_file" "lambda_archive" {
   type                    = "zip"
   source_content_filename = "${var.function_name}.py"
-  source_content          = file("${var.source_path}/${var.function_name}/handler.py")
+  source_content          = var.overrideFunctionSource == null ? ("${var.source_path}/${var.function_name}/handler.py") : ("${var.source_path}/${var.overrideFunctionSource}/handler.py")
   output_path             = "${var.build_files}/${var.function_name}.zip"
 }
 
