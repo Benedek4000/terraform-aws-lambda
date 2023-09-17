@@ -1,0 +1,16 @@
+#  Local .terraform directories
+**/.terraform
+**/.terraform.d
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+.terraform
+.terraform.tfstate.lock.info
+.terraform.lock.hcl
+
+**/.idea
+**/*.iml
+*.log
+**/build_files
+**/zone_name.txt

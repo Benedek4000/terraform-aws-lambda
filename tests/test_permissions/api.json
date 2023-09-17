@@ -1,0 +1,53 @@
+{
+	"openapi": "3.0.1",
+	"info": {
+		"title": "test-lambda",
+		"description": "Lambda Module Test",
+		"version": "2023-04-29T21:55:02Z"
+	},
+	"paths": {
+		"/status": {
+			"get": {
+				"responses": {
+					"200": {
+						"description": "200 response",
+						"content": {}
+					}
+				},
+				"x-amazon-apigateway-integration": {
+					"type": "mock",
+					"responses": {
+						"default": {
+							"statusCode": "200"
+						}
+					},
+					"requestTemplates": {
+						"application/json": "{\"statusCode\": 200}"
+					},
+					"passthroughBehavior": "when_no_match"
+				}
+			},
+			"options": {
+				"responses": {
+					"200": {
+						"description": "200 response",
+						"content": {}
+					}
+				},
+				"x-amazon-apigateway-integration": {
+					"type": "mock",
+					"responses": {
+						"default": {
+							"statusCode": "200"
+						}
+					},
+					"requestTemplates": {
+						"application/json": "{\"statusCode\": 200}"
+					},
+					"passthroughBehavior": "when_no_match"
+				}
+			}
+		}
+	},
+	"components": {}
+}
