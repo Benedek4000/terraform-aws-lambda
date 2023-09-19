@@ -17,7 +17,7 @@ resource "aws_lambda_layer_version" "lambda_layer" {
 data "archive_file" "lambda_archive" {
   type                    = "zip"
   source_content_filename = "${var.function_name}.py"
-  source_content          = var.overrideFunctionSource == null ? ("${var.source_path}/${var.function_name}/handler.py") : ("${var.source_path}/${var.overrideFunctionSource}/handler.py")
+  source_content          = var.overrideFunctionSource == null ? (file("${var.source_path}/${var.function_name}/handler.py")) : (file("${var.source_path}/${var.overrideFunctionSource}/handler.py"))
   output_path             = "${var.build_files}/${var.function_name}.zip"
 }
 
@@ -38,20 +38,20 @@ resource "aws_lambda_function" "function" {
 }
 
 resource "aws_lambda_permission" "cloudwatch_permission" {
-  for_each = { for i, val in var.cloudwatchInvokeArns : i => val }
+  for_each = { for k, v in var.cloudwatchInvokeArns : k => v }
 
   source_arn    = each.value
-  statement_id  = "AllowCloudWatchInvoke-${split("/", each.value)[-1]}"
+  statement_id  = "AllowCloudWatchInvoke-${var.function_name}-${element(split("/", each.value), length(split("/", each.value)) - 1)}"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.function.function_name
   principal     = "events.amazonaws.com"
 }
 
 resource "aws_lambda_permission" "api_gateway_permission" {
-  for_each = { for i, val in var.apiGatewayInvokeArns : i => val }
+  for_each = { for k, v in var.apiGatewayInvokeArns : k => v }
 
   source_arn    = "${each.value}/*"
-  statement_id  = "AllowAPIGatewayInvoke-${split("/", each.value)[-1]}"
+  statement_id  = "AllowAPIGatewayInvoke-${var.function_name}-${element(split(":", each.value), length(split(":", each.value)) - 1)}"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.function.function_name
   principal     = "apigateway.amazonaws.com"

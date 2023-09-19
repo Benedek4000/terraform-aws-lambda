@@ -6,7 +6,7 @@
 		"version": "2023-04-29T21:55:02Z"
 	},
 	"paths": {
-		"/status": {
+		"/getResponse": {
 			"get": {
 				"responses": {
 					"200": {
