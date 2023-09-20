@@ -2,7 +2,6 @@
 
 TODO:
 
--   remove need for zone_name.txt from test-permissions
 -   more accurate test-permissions
 
 <!-- BEGIN_TF_DOCS -->
