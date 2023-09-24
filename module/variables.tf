@@ -1,4 +1,4 @@
-variable "function_name" {
+variable "functionName" {
   type        = string
   description = "Function name."
   nullable    = false
@@ -10,25 +10,25 @@ variable "runtime" {
   nullable    = false
 }
 
-variable "source_path" {
+variable "sourcePath" {
   type        = string
   description = "The path of the folder containing the lambda function folder."
   nullable    = false
 }
 
-variable "build_files" {
+variable "buildFiles" {
   type        = string
   description = "The path of the folder containing the build files."
   nullable    = false
 }
 
-variable "role_arn" {
+variable "roleArn" {
   type        = string
   description = "The ARN of the role the lambda function will assume."
   nullable    = false
 }
 
-variable "has_dependencies" {
+variable "hasDependencies" {
   type        = bool
   description = "True if the function has dependencies in the 'dependencies' folder."
   default     = false

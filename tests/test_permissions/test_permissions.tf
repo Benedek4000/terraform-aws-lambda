@@ -98,13 +98,13 @@ resource "aws_api_gateway_deployment" "api" {
 ##### TESTS #####
 
 module "permissions" {
-  source = "../.."
+  source = "../../module"
 
-  function_name        = local.functionName
-  source_path          = local.lambdaFileSource
-  build_files          = local.buildFileSource
+  functionName         = local.functionName
+  sourcePath           = local.lambdaFileSource
+  buildFiles           = local.buildFileSource
   runtime              = "python3.11"
-  role_arn             = aws_iam_role.role.arn
+  roleArn              = aws_iam_role.role.arn
   cloudwatchInvokeArns = [aws_cloudwatch_event_rule.triggerLambda.arn]
   apiGatewayInvokeArns = [aws_api_gateway_rest_api.api.execution_arn]
 }

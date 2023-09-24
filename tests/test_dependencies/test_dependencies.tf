@@ -50,14 +50,14 @@ resource "aws_iam_role_policy_attachment" "predefinedPolicies" {
 ##### TESTS #####
 
 module "dependencies" {
-  source = "../.."
+  source = "../../module"
 
-  function_name    = local.functionName
-  source_path      = local.lambdaFileSource
-  build_files      = local.buildFileSource
-  runtime          = "python3.11"
-  role_arn         = aws_iam_role.role.arn
-  has_dependencies = true
+  functionName    = local.functionName
+  sourcePath      = local.lambdaFileSource
+  buildFiles      = local.buildFileSource
+  runtime         = "python3.11"
+  roleArn         = aws_iam_role.role.arn
+  hasDependencies = true
 }
 
 resource "test_assertions" "tests" {

@@ -50,14 +50,14 @@ resource "aws_iam_role_policy_attachment" "predefinedPolicies" {
 ##### TESTS #####
 
 module "timeout" {
-  source = "../.."
+  source = "../../module"
 
-  function_name = local.functionName
-  source_path   = local.lambdaFileSource
-  build_files   = local.buildFileSource
-  runtime       = "python3.11"
-  role_arn      = aws_iam_role.role.arn
-  timeout       = 5
+  functionName = local.functionName
+  sourcePath   = local.lambdaFileSource
+  buildFiles   = local.buildFileSource
+  runtime      = "python3.11"
+  roleArn      = aws_iam_role.role.arn
+  timeout      = 5
 }
 
 resource "test_assertions" "tests" {
