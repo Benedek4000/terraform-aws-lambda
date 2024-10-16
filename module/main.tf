@@ -41,7 +41,7 @@ resource "aws_lambda_permission" "cloudwatch_permission" {
   for_each = { for k, v in var.cloudwatchInvokeArns : k => v }
 
   source_arn    = each.value
-  statement_id  = "AllowCloudWatchInvoke-${var.functionName}-${element(split("/", each.value), length(split("/", each.value)) - 1)}"
+  statement_id  = "AllowCloudWatchInvoke-${element(split("/", each.value), length(split("/", each.value)) - 1)}"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.function.function_name
   principal     = "events.amazonaws.com"
@@ -51,7 +51,7 @@ resource "aws_lambda_permission" "api_gateway_permission" {
   for_each = { for k, v in var.apiGatewayInvokeArns : k => v }
 
   source_arn    = "${each.value}/*"
-  statement_id  = "AllowAPIGatewayInvoke-${var.functionName}-${element(split(":", each.value), length(split(":", each.value)) - 1)}"
+  statement_id  = "AllowAPIGatewayInvoke-${element(split(":", each.value), length(split(":", each.value)) - 1)}"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.function.function_name
   principal     = "apigateway.amazonaws.com"
